@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.6</version>
+		<version>3.3.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ufma</groupId>
-	<artifactId>portal-egresso</artifactId>
+	<artifactId>labprog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>portal-egresso</name>
+	<name>labprog</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -63,6 +63,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+    	</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -71,6 +78,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<excludeDevtools>false</excludeDevtools>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
