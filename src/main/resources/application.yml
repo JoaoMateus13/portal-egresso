@@ -1,0 +1,14 @@
+spring:
+    application:
+        name: labprog
+    
+    profiles:
+        active: ${APP_PROFILE:prod}
+
+    jpa:
+        open-in-view: false
+
+
+    devtools:
+        remote:
+            secret: 123456

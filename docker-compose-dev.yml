@@ -1,0 +1,43 @@
+services:
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_dev:5432/labprog
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123456
+    ports:
+      - 8051:8080
+    volumes:
+      - .:/app
+      - ~/.m2:/root/.m2
+    command: mvn spring-boot:run
+    networks:
+      - labprog-dev-network
+    depends_on:
+      db_dev:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db_dev:
+    image: postgres:14-alpine
+    container_name: db-labprog-dev
+    environment:
+      - POSTGRES_DB=labprog
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - 5438:5432
+    networks:
+      - labprog-dev-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+networks:
+  labprog-dev-network:
+    driver: bridge
