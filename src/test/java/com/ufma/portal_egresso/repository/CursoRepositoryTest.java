@@ -26,13 +26,39 @@ public class CursoRepositoryTest {
 
     @Test
     public void shouldVerifySaveCourse() {
-        Curso curso = Factory.createCurso();
-        curso.setId_curso(null); // Garante que o ID será gerado automaticamente
 
+        Curso curso = Factory.createCurso();
+        
         repository.save(curso);
 
+        Assertions.assertNotNull(curso.getId_curso());
+        Assertions.assertEquals(totalCurso + 1, repository.count());
+        
         Optional<Curso> result = repository.findById(curso.getId_curso());
-
+        
         Assertions.assertTrue(result.isPresent());
+        Assertions.assertEquals(curso.getNome(), result.get().getNome());
+        Assertions.assertEquals(curso.getNivel(), result.get().getNivel());
+    }
+
+
+    @Test
+    public void shouldVerifyDeleteCourse(){
+            
+            Curso curso = Factory.createCurso();
+            
+            repository.save(curso);
+    
+            Assertions.assertNotNull(curso.getId_curso());
+            Assertions.assertEquals(totalCurso + 1, repository.count());
+            
+            repository.delete(curso);
+            
+            Assertions.assertEquals(totalCurso, repository.count());
+    }
+
+    @Test
+    public void shouldVerifyUpdateCourse(){
+        
     }
 }

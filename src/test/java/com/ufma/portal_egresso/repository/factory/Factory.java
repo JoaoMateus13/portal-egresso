@@ -38,7 +38,7 @@ public class Factory {
     public static Curso createCurso() {
         Curso curso = new Curso();
 
-        curso.setNome("Ciência da Computação");
+        curso.setNome("BICT");
         curso.setNivel("Graduação");
 
         return curso;
