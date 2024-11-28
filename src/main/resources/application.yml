@@ -1,9 +1,9 @@
 spring:
     application:
-        name: labprog
+        name: portal-egresso
     
     profiles:
-        active: ${APP_PROFILE:prod}
+        active: ${APP_PROFILE:test}
 
     jpa:
         open-in-view: false
