@@ -59,6 +59,49 @@ public class CursoRepositoryTest {
 
     @Test
     public void shouldVerifyUpdateCourse(){
-        
+            
+            Curso curso = Factory.createCurso();
+            
+            repository.save(curso);
+    
+            Assertions.assertNotNull(curso.getId_curso());
+            Assertions.assertEquals(totalCurso + 1, repository.count());
+            
+            curso.setNome("Bacharelado em Ciência da Computação");
+            curso.setNivel("Bacharelado");
+            
+            repository.save(curso);
+            
+            Optional<Curso> result = repository.findById(curso.getId_curso());
+            
+            Assertions.assertTrue(result.isPresent());
+            Assertions.assertEquals(curso.getNome(), result.get().getNome());
+            Assertions.assertEquals(curso.getNivel(), result.get().getNivel());
     }
+
+
+    @Test
+    public void shouldReturnNullWhenCourseDoesNotExist(){
+            
+            Optional<Curso> result = repository.findById(0L);
+            
+            Assertions.assertTrue(result.isEmpty());
+    }
+
+    
+    @Test
+    public void shouldReturnAllCourses(){
+            
+            Curso curso = Factory.createCurso();
+            
+            repository.save(curso);
+    
+            Assertions.assertNotNull(curso.getId_curso());
+            Assertions.assertEquals(totalCurso + 1, repository.count());
+            
+            Iterable<Curso> result = repository.findAll();
+            
+            Assertions.assertTrue(result.iterator().hasNext());
+    }
+
 }
