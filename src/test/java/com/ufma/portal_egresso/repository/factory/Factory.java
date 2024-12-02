@@ -15,6 +15,8 @@ public class Factory {
 
         cursoEgresso.setAno_fim(2021);
         cursoEgresso.setAno_inicio(2017);
+        cursoEgresso.setCurso(curso);
+        cursoEgresso.setEgresso(egresso);
 
         CursoEgressoId id = new CursoEgressoId();
         id.setId_curso(curso.getId_curso());

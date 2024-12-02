@@ -16,7 +16,7 @@ import lombok.Data;
 public class CursoEgresso {
 
     @EmbeddedId
-    private CursoEgressoId id = new CursoEgressoId();
+    private CursoEgressoId id;
 
     @ManyToOne
     @MapsId("id_curso")

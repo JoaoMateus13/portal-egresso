@@ -34,7 +34,7 @@ public class CursoEgressoRepositoryTest {
 
 
     @Test
-    public void shouldVerifySaveCursoEgresso() {
+    public void shouldSaveCursoEgresso() {
         Curso curso = Factory.createCurso();
         cursoRepository.save(curso);
 
@@ -53,6 +53,96 @@ public class CursoEgressoRepositoryTest {
         Assertions.assertTrue(result.isPresent());
         Assertions.assertEquals(cursoEgresso.getAno_fim(), result.get().getAno_fim());
         Assertions.assertEquals(cursoEgresso.getAno_inicio(), result.get().getAno_inicio());
+    }
+
+    @Test
+    public void shouldDeleteCursoEgresso() {
+        Curso curso = Factory.createCurso();
+        cursoRepository.save(curso);
+
+        Egresso egresso = Factory.createEgresso();
+        egressoRepository.save(egresso);
+
+        CursoEgresso cursoEgresso = Factory.createCursoEgresso(curso, egresso);
+
+        repository.save(cursoEgresso);
+
+        repository.delete(cursoEgresso);
+
+        Optional<CursoEgresso> result = repository.findById(cursoEgresso.getId());
+
+        Assertions.assertFalse(result.isPresent());
+        Assertions.assertEquals(totalCursoEgresso, repository.count());
+
+    }
+
+
+    @Test
+    public void shouldUpdateCursoEgresso() {
+        Curso curso = Factory.createCurso();
+        cursoRepository.save(curso);
+
+        Egresso egresso = Factory.createEgresso();
+        egressoRepository.save(egresso);
+
+        CursoEgresso cursoEgresso = Factory.createCursoEgresso(curso, egresso);
+
+        repository.save(cursoEgresso);
+
+        cursoEgresso.setAno_fim(2020);
+        cursoEgresso.setAno_inicio(2016);
+
+        repository.save(cursoEgresso);
+
+        Optional<CursoEgresso> result = repository.findById(cursoEgresso.getId());
+
+        Assertions.assertTrue(result.isPresent());
+        Assertions.assertEquals(cursoEgresso.getAno_fim(), result.get().getAno_fim()); 
+        Assertions.assertEquals(cursoEgresso.getAno_inicio(), result.get().getAno_inicio());
+    }
+
+    @Test
+    public void shouldReturnNullWhenCursoEgressoDoesNotExist() {
+        Curso curso = Factory.createCurso();
+        cursoRepository.save(curso);
+
+        Egresso egresso = Factory.createEgresso();
+        egressoRepository.save(egresso);
+
+        CursoEgresso cursoEgresso = Factory.createCursoEgresso(curso, egresso);
+
+        repository.save(cursoEgresso);
+
+        repository.delete(cursoEgresso);
+
+        Optional<CursoEgresso> result = repository.findById(cursoEgresso.getId());
+
+        Assertions.assertFalse(result.isPresent());
+    }
+
+    @Test
+    public void shouldReturnAllCursoEgresso() {
+        Curso curso = Factory.createCurso();
+        cursoRepository.save(curso);
+
+        Egresso egresso = Factory.createEgresso();
+        egressoRepository.save(egresso);
+
+        CursoEgresso cursoEgresso = Factory.createCursoEgresso(curso, egresso);
+
+        repository.save(cursoEgresso);
+
+        Curso curso2 = Factory.createCurso();
+        cursoRepository.save(curso2);
+
+        Egresso egresso2 = Factory.createEgresso();
+        egressoRepository.save(egresso2);
+
+        CursoEgresso cursoEgresso2 = Factory.createCursoEgresso(curso2, egresso2);
+
+        repository.save(cursoEgresso2);
+
+        Assertions.assertEquals(totalCursoEgresso + 2, repository.count());
     }
 
 }

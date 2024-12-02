@@ -31,7 +31,7 @@ public class DepoimentoRepositoryTest {
 
 
     @Test
-    public void shouldVerifySaveDepoimento() {
+    public void shouldSaveDepoimento() {
         Egresso egresso = Factory.createEgresso();
 
         egressoRepository.save(egresso);
@@ -54,8 +54,67 @@ public class DepoimentoRepositoryTest {
 
     }
 
+
+    @Test
+    public void shouldDeleteDepoimento(){
+
+        Egresso egresso = Factory.createEgresso();
+
+        egressoRepository.save(egresso);
+
+        Depoimento depoimento = Factory.createDepoimento();
+
+        depoimento.setEgresso(egresso);
+
+        repository.save(depoimento);
+
+        Assertions.assertNotNull(depoimento.getId_depoimento());
+        Assertions.assertEquals(totalDepoimento + 1, repository.count());
+
+        repository.delete(depoimento);
+
+        Assertions.assertEquals(totalDepoimento, repository.count());
+    }
+
+
+    @Test
+    public void shouldUpdateDepoimento(){
+
+        Egresso egresso = Factory.createEgresso();
+
+        egressoRepository.save(egresso);
+
+        Depoimento depoimento = Factory.createDepoimento();
+
+        depoimento.setEgresso(egresso);
+
+        repository.save(depoimento);
+
+        Assertions.assertNotNull(depoimento.getId_depoimento());
+        Assertions.assertEquals(totalDepoimento + 1, repository.count());
+
     
         
+    }
 
+
+    @Test
+    public void shouldReturnNullWhenDepoimentoDoesNotExist() {
+        
+        Optional<Depoimento> result = repository.findById(0L);
+
+        Assertions.assertFalse(result.isPresent());
+
+    }
+
+
+    @Test
+    public void shouldReturnAllDepoimentos() {
+        
+        Iterable<Depoimento> depoimentos = repository.findAll();
+
+        Assertions.assertNotNull(depoimentos);
+        Assertions.assertEquals(totalDepoimento, repository.count());
+    }
 
 }

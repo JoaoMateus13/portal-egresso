@@ -24,7 +24,7 @@ public class CursoRepositoryTest {
         }
 
         @Test
-        public void shouldVerifySaveCourse() {
+        public void shouldSaveCourse() {
 
                 Curso curso = Factory.createCurso();
 
@@ -41,14 +41,14 @@ public class CursoRepositoryTest {
         }
 
         @Test
-        public void shouldVerifyDeleteCourse() {
+        public void shouldDeleteCourse() {
 
                 Curso curso = Factory.createCurso();
 
                 repository.save(curso);
 
                 Assertions.assertNotNull(curso.getId_curso());
-                Assertions.assertEquals(totalCurso + 1, totalCurso);
+                Assertions.assertEquals(totalCurso + 1, repository.count());
 
                 repository.delete(curso);
 
@@ -56,14 +56,14 @@ public class CursoRepositoryTest {
         }
 
         @Test
-        public void shouldVerifyUpdateCourse() {
+        public void shouldUpdateCourse() {
 
                 Curso curso = Factory.createCurso();
 
                 repository.save(curso);
 
                 Assertions.assertNotNull(curso.getId_curso());
-                Assertions.assertEquals(totalCurso + 1, totalCurso);
+                Assertions.assertEquals(totalCurso + 1, repository.count());
 
                 curso.setNome("Bacharelado em Ciência da Computação");
                 curso.setNivel("Bacharelado");
@@ -93,7 +93,7 @@ public class CursoRepositoryTest {
                 repository.save(curso);
 
                 Assertions.assertNotNull(curso.getId_curso());
-                Assertions.assertEquals(totalCurso + 1, totalCurso);
+                Assertions.assertEquals(totalCurso + 1, repository.count());
 
                 Iterable<Curso> result = repository.findAll();
 
