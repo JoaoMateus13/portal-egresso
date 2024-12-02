@@ -1,6 +1,7 @@
 package com.ufma.portal_egresso.repository.factory;
 
 import com.ufma.portal_egresso.model.Cargo;
+import com.ufma.portal_egresso.model.Coordenador;
 import com.ufma.portal_egresso.model.Curso;
 import com.ufma.portal_egresso.model.CursoEgresso;
 import com.ufma.portal_egresso.model.CursoEgressoId;
@@ -73,6 +74,16 @@ public class Factory {
         depoimento.setDate(java.time.LocalDate.now());
 
         return depoimento;
+    }
+
+
+    public static Coordenador createCoordenador() {
+        Coordenador coordenador = new Coordenador();
+
+        coordenador.setLogin("teste");
+        coordenador.setSenha("teste");
+
+        return coordenador;
     }
 
 }
