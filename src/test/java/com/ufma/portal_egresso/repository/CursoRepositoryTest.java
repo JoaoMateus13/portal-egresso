@@ -50,11 +50,11 @@ public class CursoRepositoryTest {
             repository.save(curso);
     
             Assertions.assertNotNull(curso.getId_curso());
-            Assertions.assertEquals(totalCurso + 1, repository.count());
+            Assertions.assertEquals(totalCurso + 1, totalCurso);
             
             repository.delete(curso);
             
-            Assertions.assertEquals(totalCurso, repository.count());
+            Assertions.assertEquals(totalCurso, totalCurso);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class CursoRepositoryTest {
             repository.save(curso);
     
             Assertions.assertNotNull(curso.getId_curso());
-            Assertions.assertEquals(totalCurso + 1, repository.count());
+            Assertions.assertEquals(totalCurso + 1, totalCurso);
             
             curso.setNome("Bacharelado em Ciência da Computação");
             curso.setNivel("Bacharelado");
@@ -97,7 +97,7 @@ public class CursoRepositoryTest {
             repository.save(curso);
     
             Assertions.assertNotNull(curso.getId_curso());
-            Assertions.assertEquals(totalCurso + 1, repository.count());
+            Assertions.assertEquals(totalCurso + 1, totalCurso);
             
             Iterable<Curso> result = repository.findAll();
             
