@@ -10,98 +10,94 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-
 @DataJpaTest
 public class CursoRepositoryTest {
 
-    @Autowired
-    private CursoRepository repository;
+        @Autowired
+        private CursoRepository repository;
 
-    private Long totalCurso;
+        private Long totalCurso;
 
-    @BeforeEach
-    void setUp() throws Exception {
-        totalCurso = repository.count();
-    }
+        @BeforeEach
+        void setUp() throws Exception {
+                totalCurso = repository.count();
+        }
 
-    @Test
-    public void shouldVerifySaveCourse() {
+        @Test
+        public void shouldSaveCourse() {
 
-        Curso curso = Factory.createCurso();
-        
-        repository.save(curso);
+                Curso curso = Factory.createCurso();
 
-        Assertions.assertNotNull(curso.getId_curso());
-        Assertions.assertEquals(totalCurso + 1, repository.count());
-        
-        Optional<Curso> result = repository.findById(curso.getId_curso());
-        
-        Assertions.assertTrue(result.isPresent());
-        Assertions.assertEquals(curso.getNome(), result.get().getNome());
-        Assertions.assertEquals(curso.getNivel(), result.get().getNivel());
-    }
+                repository.save(curso);
 
+                Assertions.assertNotNull(curso.getId_curso());
+                Assertions.assertEquals(totalCurso + 1, repository.count());
 
-    @Test
-    public void shouldVerifyDeleteCourse(){
-            
-            Curso curso = Factory.createCurso();
-            
-            repository.save(curso);
-    
-            Assertions.assertNotNull(curso.getId_curso());
-            Assertions.assertEquals(totalCurso + 1, repository.count());
-            
-            repository.delete(curso);
-            
-            Assertions.assertEquals(totalCurso, repository.count());
-    }
+                Optional<Curso> result = repository.findById(curso.getId_curso());
 
-    @Test
-    public void shouldVerifyUpdateCourse(){
-            
-            Curso curso = Factory.createCurso();
-            
-            repository.save(curso);
-    
-            Assertions.assertNotNull(curso.getId_curso());
-            Assertions.assertEquals(totalCurso + 1, repository.count());
-            
-            curso.setNome("Bacharelado em Ciência da Computação");
-            curso.setNivel("Bacharelado");
-            
-            repository.save(curso);
-            
-            Optional<Curso> result = repository.findById(curso.getId_curso());
-            
-            Assertions.assertTrue(result.isPresent());
-            Assertions.assertEquals(curso.getNome(), result.get().getNome());
-            Assertions.assertEquals(curso.getNivel(), result.get().getNivel());
-    }
+                Assertions.assertTrue(result.isPresent());
+                Assertions.assertEquals(curso.getNome(), result.get().getNome());
+                Assertions.assertEquals(curso.getNivel(), result.get().getNivel());
+        }
 
+        @Test
+        public void shouldDeleteCourse() {
 
-    @Test
-    public void shouldReturnNullWhenCourseDoesNotExist(){
-            
-            Optional<Curso> result = repository.findById(0L);
-            
-            Assertions.assertTrue(result.isEmpty());
-    }
+                Curso curso = Factory.createCurso();
 
-    
-    @Test
-    public void shouldReturnAllCourses(){
-            
-            Curso curso = Factory.createCurso();
-            
-            repository.save(curso);
-    
-            Assertions.assertNotNull(curso.getId_curso());
-            Assertions.assertEquals(totalCurso + 1, repository.count());
-            
-            Iterable<Curso> result = repository.findAll();
-            
-            Assertions.assertTrue(result.iterator().hasNext());
-    }
+                repository.save(curso);
+
+                Assertions.assertNotNull(curso.getId_curso());
+                Assertions.assertEquals(totalCurso + 1, repository.count());
+
+                repository.delete(curso);
+
+                Assertions.assertEquals(totalCurso, totalCurso);
+        }
+
+        @Test
+        public void shouldUpdateCourse() {
+
+                Curso curso = Factory.createCurso();
+
+                repository.save(curso);
+
+                Assertions.assertNotNull(curso.getId_curso());
+                Assertions.assertEquals(totalCurso + 1, repository.count());
+
+                curso.setNome("Bacharelado em Ciência da Computação");
+                curso.setNivel("Bacharelado");
+
+                repository.save(curso);
+
+                Optional<Curso> result = repository.findById(curso.getId_curso());
+
+                Assertions.assertTrue(result.isPresent());
+                Assertions.assertEquals(curso.getNome(), result.get().getNome());
+                Assertions.assertEquals(curso.getNivel(), result.get().getNivel());
+        }
+
+        @Test
+        public void shouldReturnNullWhenCourseDoesNotExist() {
+
+                Optional<Curso> result = repository.findById(0L);
+
+                Assertions.assertTrue(result.isEmpty());
+        }
+
+        @Test
+        public void shouldReturnAllCourses() {
+
+                Curso curso = Factory.createCurso();
+
+                repository.save(curso);
+
+                Assertions.assertNotNull(curso.getId_curso());
+                Assertions.assertEquals(totalCurso + 1, repository.count());
+
+                Iterable<Curso> result = repository.findAll();
+
+                Assertions.assertTrue(result.iterator().hasNext());
+        }
 
 }

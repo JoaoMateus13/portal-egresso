@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -36,7 +37,7 @@ public class Egresso {
 
     private String curriculo;
 
-    @OneToMany(mappedBy = "egresso")
+    @OneToMany(mappedBy = "egresso", cascade = CascadeType.ALL)
     private List<Cargo> cargos = new ArrayList<>();
 
 

@@ -29,7 +29,7 @@ public class EgressoRepositoryTest {
 
 
     @Test
-    public void shouldVerifySaveEgresso() {
+    public void shouldSaveEgresso() {
 
         Egresso egresso = Factory.createEgresso();
         
@@ -46,7 +46,7 @@ public class EgressoRepositoryTest {
     }
     
     @Test
-    public void shouldVerifyDeleteEgresso(){
+    public void shouldDeleteEgresso(){
             
             Egresso egresso = Factory.createEgresso();
             
@@ -61,7 +61,7 @@ public class EgressoRepositoryTest {
     }
 
     @Test
-    public void shouldVerifyUpdateEgresso(){
+    public void shouldUpdateEgresso(){
             
             Egresso egresso = Factory.createEgresso();
             
@@ -81,5 +81,29 @@ public class EgressoRepositoryTest {
             Assertions.assertEquals(egresso.getNome(), result.get().getNome());
             Assertions.assertEquals(egresso.getEmail(), result.get().getEmail());
 
+    }
+
+    @Test
+    public void shouldReturnNullWhenEgressoDoesNotExist(){
+            
+            Optional<Egresso> result = repository.findById(0L);
+            
+            Assertions.assertTrue(result.isEmpty());
+    }
+
+
+    @Test
+    public void shouldReturnAllCourses(){
+
+        Egresso egresso = Factory.createEgresso();
+        
+        repository.save(egresso);
+        
+        Assertions.assertNotNull(egresso.getId_egresso());
+        Assertions.assertEquals(totalEgresso + 1, repository.count());
+        
+        Iterable<Egresso> result = repository.findAll();
+        
+        Assertions.assertTrue(result.iterator().hasNext());
     }
 }
