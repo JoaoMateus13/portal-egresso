@@ -2,7 +2,7 @@ package com.ufma.portal_egresso.repository;
 
 import java.util.Optional;
 
-import org.aspectj.lang.annotation.Before;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
