@@ -37,7 +37,7 @@ public class Factory {
         egresso.setDescricao("Egresso do curso de Ciência da Computação");
         egresso.setFoto("foto.jpg");
         egresso.setLinkedin("linkedin.com");
-        egresso.setInstagam("instagram.com");
+        egresso.setInstagram("instagram.com");
         egresso.setCurriculo("curriculo.pdf");
 
         return egresso;
