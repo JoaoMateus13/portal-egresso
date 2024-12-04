@@ -20,9 +20,4 @@ INSERT INTO depoimento (texto, date, id_egresso) VALUES ('Depoimento da Maria', 
 
 INSERT INTO curso_egresso (id_curso, id_egresso, ano_inicio, ano_fim) VALUES (1, 1, 2010, 2014);
 
-<<<<<<< HEAD
 INSERT INTO curso_egresso (id_curso, id_egresso, ano_inicio, ano_fim) VALUES (2, 2, 2011, 2015);
-=======
-INSERT INTO curso_egresso (id_curso, id_egresso, ano_inicio, ano_fim) VALUES (2, 2, 2011, 2015);
-
->>>>>>> feat/model
