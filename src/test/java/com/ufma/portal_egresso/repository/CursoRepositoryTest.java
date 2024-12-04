@@ -2,8 +2,9 @@ package com.ufma.portal_egresso.repository;
 
 import java.util.Optional;
 
+import com.ufma.portal_egresso.factory.Factory;
 import com.ufma.portal_egresso.model.Curso;
-import com.ufma.portal_egresso.repository.factory.Factory;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

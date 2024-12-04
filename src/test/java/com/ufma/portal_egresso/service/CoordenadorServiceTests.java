@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.ufma.portal_egresso.factory.Factory;
 import com.ufma.portal_egresso.model.Coordenador;
 import com.ufma.portal_egresso.repository.CoordenadorRepository;
 import com.ufma.portal_egresso.repository.CursoRepository;
 import com.ufma.portal_egresso.repository.EgressoRepository;
-import com.ufma.portal_egresso.repository.factory.Factory;
 
 @SpringBootTest
 public class CoordenadorServiceTests {

@@ -1,4 +1,4 @@
-package com.ufma.portal_egresso.repository.factory;
+package com.ufma.portal_egresso.factory;
 
 import com.ufma.portal_egresso.model.Cargo;
 import com.ufma.portal_egresso.model.Coordenador;
