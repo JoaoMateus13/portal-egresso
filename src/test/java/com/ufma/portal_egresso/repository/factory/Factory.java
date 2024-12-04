@@ -37,7 +37,7 @@ public class Factory {
         egresso.setDescricao("Egresso do curso de Ciência da Computação");
         egresso.setFoto("foto.jpg");
         egresso.setLinkedin("linkedin.com");
-        egresso.setInstagam("instagram.com");
+        egresso.setInstagram("instagram.com");
         egresso.setCurriculo("curriculo.pdf");
 
         return egresso;
@@ -80,8 +80,8 @@ public class Factory {
     public static Coordenador createCoordenador() {
         Coordenador coordenador = new Coordenador();
 
-        coordenador.setLogin("teste");
-        coordenador.setSenha("teste");
+        coordenador.setLogin("test");
+        coordenador.setSenha("test");
 
         return coordenador;
     }
