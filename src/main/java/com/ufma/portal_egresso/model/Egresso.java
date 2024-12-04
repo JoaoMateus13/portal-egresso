@@ -33,7 +33,7 @@ public class Egresso {
 
     private String linkedin;
 
-    private String instagam;
+    private String instagram;
 
     private String curriculo;
 
