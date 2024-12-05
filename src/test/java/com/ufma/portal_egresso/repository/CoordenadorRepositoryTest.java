@@ -38,7 +38,7 @@ public class CoordenadorRepositoryTest {
 
         cursoRepository.save(curso);
 
-        Coordenador coordenador = Factory.createCoordenador();
+        Coordenador coordenador = Factory.createCoordenador("test", "test");
 
         coordenador.getCursos().add(curso);
 
@@ -60,7 +60,7 @@ public class CoordenadorRepositoryTest {
 
         cursoRepository.save(curso);
 
-        Coordenador coordenador = Factory.createCoordenador();
+        Coordenador coordenador = Factory.createCoordenador("test", "test");
 
         coordenador.getCursos().add(curso);
 
@@ -79,7 +79,7 @@ public class CoordenadorRepositoryTest {
 
         cursoRepository.save(curso);
 
-        Coordenador coordenador = Factory.createCoordenador();
+        Coordenador coordenador = Factory.createCoordenador("test", "test");
 
         coordenador.getCursos().add(curso);
 
@@ -114,7 +114,7 @@ public class CoordenadorRepositoryTest {
 
             cursoRepository.save(curso);
 
-            Coordenador coordenador = Factory.createCoordenador();
+            Coordenador coordenador = Factory.createCoordenador("test", "test");
 
             coordenador.getCursos().add(curso);
 
