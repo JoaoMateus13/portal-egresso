@@ -14,6 +14,16 @@ public class CursoEgressoId implements Serializable{
     private Long id_curso;
 
     @Column(name = "id_egresso")
-    private Long id_egresso;    
+    private Long id_egresso; 
 
+    public CursoEgressoId() {
+    }
+
+    public CursoEgressoId(Long idCurso, Long idEgresso) {
+        this.id_curso = idCurso;
+        this.id_egresso = idEgresso;
+    }
+    
 }
+
+
