@@ -1,18 +1,15 @@
 package com.ufma.portal_egresso.service;
 
-import org.checkerframework.checker.units.qual.A;
-import org.checkerframework.checker.units.qual.t;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
+
 
 import java.lang.IllegalArgumentException;
-import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.ufma.portal_egresso.factory.Factory;
 import com.ufma.portal_egresso.model.Cargo;
 import com.ufma.portal_egresso.model.Coordenador;
@@ -27,7 +24,6 @@ import com.ufma.portal_egresso.repository.DepoimentoRepository;
 import com.ufma.portal_egresso.model.Egresso;
 import com.ufma.portal_egresso.repository.EgressoRepository;
 
-import jakarta.transaction.Transactional;
 @SpringBootTest
 public class CoordenadorServiceTests {
 
