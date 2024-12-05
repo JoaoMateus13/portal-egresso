@@ -77,11 +77,11 @@ public class Factory {
     }
 
 
-    public static Coordenador createCoordenador() {
+    public static Coordenador createCoordenador(String login, String senha) {
         Coordenador coordenador = new Coordenador();
 
-        coordenador.setLogin("test");
-        coordenador.setSenha("test");
+        coordenador.setLogin(login);
+        coordenador.setSenha(senha);
 
         return coordenador;
     }
