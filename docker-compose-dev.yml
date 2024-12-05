@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: maven:3.9.6-eclipse-temurin-21-alpine
+    working_dir: /app
     environment:
       - SPRING_PROFILES_ACTIVE=dev
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db_dev:5432/labprog

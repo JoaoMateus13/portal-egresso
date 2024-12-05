@@ -1,8 +1,8 @@
-INSERT INTO egresso (nome, email, descricao, foto, linkedin, instagam, curriculo) VALUES ('João Silva', 'joao.silva@example.com', 'Descrição do João', 'foto1.jpg', 'linkedin.com/joao', 'instagram.com/joao', 'curriculo1.pdf');
+INSERT INTO egresso (nome, email, descricao, foto, linkedin, instagram, curriculo) VALUES ('João Silva', 'joao.silva@example.com', 'Descrição do João', 'foto1.jpg', 'linkedin.com/joao', 'instagram.com/joao', 'curriculo1.pdf');
 
-INSERT INTO egresso (nome, email, descricao, foto, linkedin, instagam, curriculo) VALUES ('Maria Souza', 'maria.souza@example.com', 'Descrição da Maria', 'foto2.jpg', 'linkedin.com/maria', 'instagram.com/maria', 'curriculo2.pdf');
+INSERT INTO egresso (nome, email, descricao, foto, linkedin, instagram, curriculo) VALUES ('Maria Souza', 'maria.souza@example.com', 'Descrição da Maria', 'foto2.jpg', 'linkedin.com/maria', 'instagram.com/maria', 'curriculo2.pdf');
 
-INSERT INTO egresso (nome, email, descricao, foto, linkedin, instagam, curriculo) VALUES ('José Santos', 'josé.santos@example.com', 'Descrição do José', 'foto3.jpg', 'linkedin.com/jose', 'instagram.com/jose', 'curriculo3.pdf');
+INSERT INTO egresso (nome, email, descricao, foto, linkedin, instagram, curriculo) VALUES ('José Santos', 'josé.santos@example.com', 'Descrição do José', 'foto3.jpg', 'linkedin.com/jose', 'instagram.com/jose', 'curriculo3.pdf');
 
 INSERT INTO coordenador (login, senha, tipo) VALUES ('admin', 'admin', 'ADMIN');
 
