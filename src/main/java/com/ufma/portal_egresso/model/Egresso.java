@@ -13,6 +13,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -41,11 +43,13 @@ public class Egresso {
     private List<Cargo> cargos = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "egresso")
+    @OneToMany(mappedBy = "egresso", cascade = CascadeType.ALL)
     private List<Depoimento> depoimentos = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "egresso")
+    @OneToMany(mappedBy = "egresso", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<CursoEgresso> cursoEgresso = new HashSet<>();
 
 }

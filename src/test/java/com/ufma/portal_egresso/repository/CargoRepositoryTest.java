@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import com.ufma.portal_egresso.factory.Factory;
 import com.ufma.portal_egresso.model.Cargo;
 import com.ufma.portal_egresso.model.Egresso;
-import com.ufma.portal_egresso.repository.factory.Factory;
 
 @DataJpaTest
 public class CargoRepositoryTest {

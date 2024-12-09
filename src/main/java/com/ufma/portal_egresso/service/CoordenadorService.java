@@ -13,7 +13,9 @@ import com.ufma.portal_egresso.model.CursoEgressoId;
 import com.ufma.portal_egresso.model.Depoimento;
 import com.ufma.portal_egresso.model.Egresso;
 import com.ufma.portal_egresso.repository.CoordenadorRepository;
+import com.ufma.portal_egresso.repository.CursoEgressoRepository;
 import com.ufma.portal_egresso.repository.CursoRepository;
+import com.ufma.portal_egresso.repository.DepoimentoRepository;
 import com.ufma.portal_egresso.repository.EgressoRepository;
 import com.ufma.portal_egresso.service.expections.ResourceNotFoundException;
 
@@ -30,6 +32,9 @@ public class CoordenadorService {
 
     @Autowired
     private EgressoRepository egressoRepository;
+
+    @Autowired
+    private CursoEgressoRepository cursoEgressoRepository;
 
     @Transactional
     public boolean efetuarLogin(String login, String senha) {
@@ -51,7 +56,7 @@ public class CoordenadorService {
 
 
     @Transactional
-    private Curso ManterCurso (Curso CursoDTO){
+    public Curso ManterCurso (Curso CursoDTO){
 
         Curso curso = new Curso();
 
@@ -81,11 +86,13 @@ public class CoordenadorService {
 
 
     @Transactional
-    public Egresso adicionarDepoimentoEgresso(Egresso egressoDTO, Depoimento depoimentoDTO) {
+    public Egresso adicionarDepoimentoEgresso(Egresso egresso, Depoimento depoimento) {
 
-        egressoDTO.getDepoimentos().add(depoimentoDTO);
+  
+        egresso.getDepoimentos().add(depoimento);
 
-        return egressoRepository.save(egressoDTO);
+
+        return egressoRepository.save(egresso);
 
     }
 
@@ -100,38 +107,22 @@ public class CoordenadorService {
     }
 
     @Transactional
-    public CursoEgresso adicionarCursoEgresso(Egresso egressoDTO, Curso cursoDTO) {
-        
+    public CursoEgresso adicionarCursoEgresso(Egresso egresso, Curso curso, Integer anoInicio, Integer anoFim) {
         CursoEgresso cursoEgresso = new CursoEgresso();
-
-        CursoEgressoId id = new CursoEgressoId();
-
-        id.setId_curso(cursoDTO.getId_curso());
-        id.setId_egresso(egressoDTO.getId_egresso());
-
-        cursoEgresso.setId(id);
-
-        cursoEgresso.setCurso(cursoDTO);
-        cursoEgresso.setEgresso(egressoDTO);
-        cursoEgresso.setAno_inicio(2014);
-        cursoEgresso.setAno_fim(2018);
-
         
-
-        return cursoEgresso;
-
+        CursoEgressoId id = new CursoEgressoId(curso.getId_curso(), egresso.getId_egresso());
+        cursoEgresso.setId(id);
+        cursoEgresso.setCurso(curso);
+        cursoEgresso.setEgresso(egresso);
+        cursoEgresso.setAno_inicio(anoInicio);
+        cursoEgresso.setAno_fim(anoFim);
+        
+        egresso.getCursoEgresso().add(cursoEgresso);
+        curso.getCursoEgresso().add(cursoEgresso);
+        
+        return cursoEgressoRepository.save(cursoEgresso);
     }
-
-
-
-
-
-
-
-
-
-    
-
-    
-
 }
+
+
+

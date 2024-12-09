@@ -1,4 +1,4 @@
-package com.ufma.portal_egresso.repository.factory;
+package com.ufma.portal_egresso.factory;
 
 import com.ufma.portal_egresso.model.Cargo;
 import com.ufma.portal_egresso.model.Coordenador;
@@ -77,11 +77,11 @@ public class Factory {
     }
 
 
-    public static Coordenador createCoordenador() {
+    public static Coordenador createCoordenador(String login, String senha) {
         Coordenador coordenador = new Coordenador();
 
-        coordenador.setLogin("teste");
-        coordenador.setSenha("teste");
+        coordenador.setLogin(login);
+        coordenador.setSenha(senha);
 
         return coordenador;
     }
