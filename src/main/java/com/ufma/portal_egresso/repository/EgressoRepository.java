@@ -16,4 +16,8 @@ public interface EgressoRepository extends JpaRepository<Egresso, Long> {
     @Query("SELECT e FROM Egresso e JOIN e.cursoEgresso ce WHERE ce.curso.nome = :cursoNome")
     Page<Egresso> findByCursoNome(@Param("cursoNome") String cursoNome, Pageable pageable);
 
+
+    @Query("SELECT e FROM Egresso e JOIN e.cargos c WHERE c.descricao = :descricao")
+    Page<Egresso> findByCargo(String descricao, Pageable pageable);
+
 }

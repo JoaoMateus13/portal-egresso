@@ -8,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.ufma.portal_egresso.model.Egresso;
 
 @SpringBootTest
@@ -42,10 +41,28 @@ public class EgressoServiceTests {
         Assertions.assertFalse(result.isEmpty());
         Assertions.assertEquals(0, result.getNumber());
         Assertions.assertEquals(10, result.getSize());
-        Assertions.assertTrue(result.stream().allMatch(egresso -> egresso.getCursoEgresso().stream().
+        Assertions.assertTrue(result.stream().allMatch(e -> e.getCursoEgresso().stream().
                                     anyMatch(ce -> ce.getCurso().getNome().equals(cursoNome))));
 
     }
+
+    @Test
+    @Transactional
+    public void ShouldReturnPageOfEgressosByCargo() {
+        String descricao = "Desenvolvedor";
+        PageRequest pageRequest = PageRequest.of(0, 10);
+        Page<Egresso> result = egressoService.listarEgressoPorCargo(descricao, pageRequest);
+
+        Assertions.assertFalse(result.isEmpty());
+        Assertions.assertEquals(0, result.getNumber());
+        Assertions.assertEquals(10, result.getSize());
+        Assertions.assertTrue(result.stream().allMatch(e -> e.getCargos().stream().
+                                    anyMatch(c -> c.getDescricao().equals(descricao))));
+
+    }
+
+
+
 
 
 

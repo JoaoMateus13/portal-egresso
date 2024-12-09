@@ -31,6 +31,11 @@ public class EgressoService {
     }
 
 
+    @Transactional(readOnly = true)
+    public Page<Egresso> listarEgressoPorCargo(String descricao, Pageable pageable) {
+        return egressoRepository.findByCargo(descricao, pageable);
+    }
+
 
 
 
