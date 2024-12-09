@@ -18,9 +18,9 @@ public class EgressoService {
 
 
     @Transactional(readOnly = true)
-    public Page<Egresso> listarEgressos(Integer ano, Pageable pageable) {
+    public Page<Egresso> listarEgressos(Pageable pageable) {
 
-        Page<Egresso> egressos = egressoRepository.findByAno(ano, pageable);
+        Page<Egresso> egressos = egressoRepository.findAll(pageable);
 
 
         return egressos;

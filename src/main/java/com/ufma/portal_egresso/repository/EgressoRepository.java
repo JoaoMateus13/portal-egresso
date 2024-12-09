@@ -11,9 +11,4 @@ import com.ufma.portal_egresso.model.Egresso;
 @Repository
 public interface EgressoRepository extends JpaRepository<Egresso, Long> {
 
-
-    @Query("SELECT e FROM Egresso e" +
-            "WHERE e.ano = :ano")
-    Page<Egresso> findByAno(Integer ano, Pageable pageable);
-    
 }
