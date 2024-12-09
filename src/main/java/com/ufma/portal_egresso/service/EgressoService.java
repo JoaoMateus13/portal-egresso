@@ -22,11 +22,16 @@ public class EgressoService {
 
         Page<Egresso> egressos = egressoRepository.findAll(pageable);
 
-
         return egressos;
-
-
     }
+
+    @Transactional(readOnly = true)
+    public Page<Egresso> listarEgressosPorCursoNome(String cursoNome, Pageable pageable) {
+        return egressoRepository.findByCursoNome(cursoNome, pageable);
+    }
+
+
+
 
 
 
