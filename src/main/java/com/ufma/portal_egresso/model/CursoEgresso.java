@@ -2,7 +2,7 @@ package com.ufma.portal_egresso.model;
 
 
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
