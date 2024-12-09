@@ -15,11 +15,9 @@ import com.ufma.portal_egresso.model.Egresso;
 import com.ufma.portal_egresso.repository.CoordenadorRepository;
 import com.ufma.portal_egresso.repository.CursoEgressoRepository;
 import com.ufma.portal_egresso.repository.CursoRepository;
-import com.ufma.portal_egresso.repository.DepoimentoRepository;
 import com.ufma.portal_egresso.repository.EgressoRepository;
 import com.ufma.portal_egresso.service.expections.ResourceNotFoundException;
-
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CoordenadorService {
